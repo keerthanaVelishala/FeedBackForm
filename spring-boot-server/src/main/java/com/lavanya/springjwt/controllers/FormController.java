@@ -42,16 +42,16 @@ public class FormController {
     }
 
     @GetMapping("/showFeedback")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN') or hasRole('USER')")
     public ResponseEntity<?> showFeedback(@RequestParam Integer id) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            UserDetailsImpl currentUsername = (UserDetailsImpl) authentication.getPrincipal();
-            if(currentUsername.getId()!=(long)id){
+            UserDetailsImpl currentUser = (UserDetailsImpl) authentication.getPrincipal();
+            if(currentUser.getId()!=(long)id){
                 return new ResponseEntity<>("You do not have permission to view this feedback", HttpStatus.FORBIDDEN);
             }
             List<FormDocument> feedbackForm;
-            if(currentUsername.getAuthorities().equals(ROLE_ADMIN)){
+            if(currentUser.getAuthorities().equals(ROLE_ADMIN)){
                 feedbackForm = formService.findAll();
             }
             else{

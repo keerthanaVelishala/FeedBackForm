@@ -19,10 +19,12 @@ import java.util.Date;
 public class FormDocument {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Integer userId;
     private String userName;
     private Integer rating;
     private String comment;
+    private String title;
     private LocalDateTime commentDate;
 
 }

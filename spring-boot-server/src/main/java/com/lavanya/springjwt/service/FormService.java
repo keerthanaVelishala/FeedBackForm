@@ -23,7 +23,7 @@ public class FormService {
 
 
     public List<FormDocument> findAllById(Integer id) {
-        return formRepo.findAllById(Collections.singleton(id));
+        return formRepo.findByUserId(id);
     }
 
     public List<FormDocument> findAll() {
