@@ -1,4 +1,4 @@
-package com.lavanya.springjwt;
+package com.ajay.springjwt;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
