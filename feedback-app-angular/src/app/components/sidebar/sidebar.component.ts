@@ -17,14 +17,6 @@ export class SidebarComponent implements OnInit {
   username:string = "";
   constructor(private filterService: FilterService, private feedbackService:FeedbackService,private tokenStorage: TokenStorageService) {}
   
-  editCurrentFilter(filter:string)  {
-    this.filters.forEach(item=> {
-     if(filter==item) {
-  
-      this.filterService.filterBy.next(filter)
-     }
-    })
-  }
   ngOnInit(): void {
     this.filterService.getFilterBy().subscribe(data=> {
       this.currentFilter=data

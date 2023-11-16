@@ -54,4 +54,9 @@ export class HeaderComponent implements OnInit  {
       this.isDropdownOpen=false
     }
   }
+
+  logout(): void {
+    this.tokenStorage.signOut();
+    window.location.reload();
+  }
 }

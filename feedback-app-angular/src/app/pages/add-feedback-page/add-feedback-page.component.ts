@@ -5,6 +5,7 @@ import { FeedbackService } from 'src/app/services/feedback.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { FilterService } from 'src/app/services/filter.service';
 @Component({
   selector: 'app-add-feedback-page',
   templateUrl: './add-feedback-page.component.html',
@@ -16,7 +17,8 @@ export class AddFeedbackPageComponent implements OnInit {
                 private router: Router,
                 private toastr: ToastrService,
                 private authService: AuthService, 
-                private tokenStorage: TokenStorageService) {}
+                private tokenStorage: TokenStorageService,
+                private filterService: FilterService) {}
     formGroup!:FormGroup
     public submitted = false;
 
@@ -65,6 +67,7 @@ export class AddFeedbackPageComponent implements OnInit {
           (data)=>{
             this.toastr.success('success');
             this.router.navigate(['/']);
+            this.filterService.filterBy.next("All")
           },
           err=>{
             this.toastr.error('Error ocurrred: '+err.error.error);

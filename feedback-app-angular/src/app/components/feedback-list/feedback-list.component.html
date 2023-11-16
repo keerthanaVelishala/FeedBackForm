@@ -8,10 +8,5 @@
     <app-feedback-item *ngFor="let feedback of feedbackListfiltered" [feedback]="feedback"></app-feedback-item>
 </div>
 <div class="empty__wrapper" *ngIf="!loading && feedbackListfiltered.length==0">
-    <img src="/assets/emptyIcon.svg" alt="svg">
-    <h2 >There is no feedback yet.</h2>
-    <p>Got a suggestion?</p>
-    <app-button [buttonClass]="'add__btn'" routerLink="/add" >
-        + Add Feedback
-    </app-button>
+    <h3 >There is no feedback yet.</h3>
 </div>

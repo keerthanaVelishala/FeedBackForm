@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           //this.reloadPage();
         },
         err => {
-          this.authError = err.error.error;
+          this.authError = err.error.error || err.message;
         }
       );
     }
